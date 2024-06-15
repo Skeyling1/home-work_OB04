@@ -3,7 +3,12 @@
 # Игрок управляет бойцом и может выбирать для него одно из вооружений для боя.
 
 class Fighter:
-    pass
+    def __init__(self, Weapon):
+        self.weapon = Weapon()
+
+    def changeWeapon(self, Weapon):
+        self.weapon = Weapon()
+
 
 class Monster:
     pass
@@ -15,8 +20,23 @@ class Weapon(ABC):
     def attack(self):
         pass
 
-# Шаг 2: Реализуйте конкретные типы оружия
-# - Создайте несколько классов, унаследованных от `Weapon`, например, `Sword` и `Bow`.
-# Каждый из этих классов реализует метод `attack()` своим уникальным способом.
+class Sword(Weapon):
+    def attack(self):
+        print("\nБоец выбирает меч.")
+        print("Боец наносит удар мечом.")
+        print("Монстр побежден!")
+
+class Bow(Weapon):
+    def attack(self):
+        print("\nБоец выбирает лук.")
+        print("Боец разит из лука.")
+        print("Монстр побежден!")
 
 
+figh1 = Fighter(Sword)
+
+figh1.weapon.attack()
+
+figh1.changeWeapon(Bow)
+
+figh1.weapon.attack()
